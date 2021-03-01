@@ -47,10 +47,11 @@ atacPairedEnd <- function(bam, genome=c("hg19","mm10", "GRCz11"), bamParams=NULL
 #                       hg19 = getStdChromGRanges(Homo.sapiens),
 #                       mm10 = getStdChromGRanges(Mus.musculus))
 #     } 
+    bamParams <- properPairedEndAtacFilters(...)
 #     bamParams <- properPairedEndAtacFilters(which=which, ...)
 #   }
-  readGAlignmentPairs(bam)
-#   readGAlignmentPairs(bam, param=bamParams)
+#   readGAlignmentPairs(bam)
+  readGAlignmentPairs(bam, param=bamParams)
 
 }
 
