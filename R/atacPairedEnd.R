@@ -32,7 +32,7 @@
 #' galp <- atacPairedEnd("A2.mm10.unique.bam",
 #'                       bamParams=properPairedEndAtacFilters(which=chr6))
 #' }
-atacPairedEnd <- function(bam, genome=c("hg19","mm10"), bamParams=NULL, which=NULL, ...) {
+atacPairedEnd <- function(bam, genome=c("hg19","mm10", "GRCz11"), bamParams=NULL, which=NULL, ...) {
 
   getStdChromGRanges <- function(x) {
     ## ONLY works if chromosomes are properly ordered as in OrganismDbi
@@ -43,6 +43,7 @@ atacPairedEnd <- function(bam, genome=c("hg19","mm10"), bamParams=NULL, which=NU
     if (is.null(which)) {
       genome <- match.arg(genome)
       which <- switch(genome,
+                      GRCz11 = getStdChromGRanges(Danio.rerio),
                       hg19 = getStdChromGRanges(Homo.sapiens),
                       mm10 = getStdChromGRanges(Mus.musculus))
     } 
