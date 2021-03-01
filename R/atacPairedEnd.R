@@ -43,7 +43,7 @@ atacPairedEnd <- function(bam, genome=c("hg19","mm10", "GRCz11"), bamParams=NULL
     if (is.null(which)) {
       genome <- match.arg(genome)
       which <- switch(genome,
-                      GRCz11 = getStdChromGRanges(Danio.rerio),
+                      GRCz11 = getStdChromGRanges(BSgenome.Drerio.UCSC.danRer11),
                       hg19 = getStdChromGRanges(Homo.sapiens),
                       mm10 = getStdChromGRanges(Mus.musculus))
     } 
