@@ -49,7 +49,7 @@ atacPairedEnd <- function(bam, genome=c("hg19","mm10", "GRCz11"), bamParams=NULL
     } 
     bamParams <- properPairedEndAtacFilters(which=which, ...)
   }
-
+  print(bamParams)
   readGAlignmentPairs(bam, param=bamParams)
 
 }
