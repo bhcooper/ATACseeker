@@ -34,23 +34,23 @@
 #' }
 atacPairedEnd <- function(bam, genome=c("hg19","mm10", "GRCz11"), bamParams=NULL, which=NULL, ...) {
 
-  getStdChromGRanges <- function(x) {
-    ## ONLY works if chromosomes are properly ordered as in OrganismDbi
-    as(seqinfo(x), "GRanges")[ 1:(which(seqlevels(x) == "chrM") - 1) ] 
-  }
+#   getStdChromGRanges <- function(x) {
+#     ## ONLY works if chromosomes are properly ordered as in OrganismDbi
+#     as(seqinfo(x), "GRanges")[ 1:(which(seqlevels(x) == "chrM") - 1) ] 
+#   }
 
-  if(is.null(bamParams)) {
-    if (is.null(which)) {
-      genome <- match.arg(genome)
-      which <- switch(genome,
-                      GRCz11 = getStdChromGRanges(BSgenome.Drerio.UCSC.danRer11),
-                      hg19 = getStdChromGRanges(Homo.sapiens),
-                      mm10 = getStdChromGRanges(Mus.musculus))
-    } 
-    bamParams <- properPairedEndAtacFilters(which=which, ...)
-  }
-  print(bamParams)
-  readGAlignmentPairs(bam, param=bamParams)
+#   if(is.null(bamParams)) {
+#     if (is.null(which)) {
+#       genome <- match.arg(genome)
+#       which <- switch(genome,
+#                       GRCz11 = getStdChromGRanges(BSgenome.Drerio.UCSC.danRer11),
+#                       hg19 = getStdChromGRanges(Homo.sapiens),
+#                       mm10 = getStdChromGRanges(Mus.musculus))
+#     } 
+#     bamParams <- properPairedEndAtacFilters(which=which, ...)
+#   }
+  readGAlignmentPairs(bam)
+#   readGAlignmentPairs(bam, param=bamParams)
 
 }
 
